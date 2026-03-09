@@ -8,10 +8,12 @@ class Whistler < Formula
   depends_on "rust" => :build
 
   def install
-    # The Rust crate is in the nested whistler/ directory.
-    system "cargo", "install", *std_cargo_args(path: "whistler")
+    # Build the binary from the nested whistler/ directory
+    cd "whistler" do
+      system "cargo", "install", "--locked", "--root", prefix, "--path", "."
+    end
 
-    # Provide a conventional lowercase executable name.
+    # Provide a conventional lowercase executable name
     bin.install_symlink bin/"Whistler" => "whistler"
   end
 
