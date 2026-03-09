@@ -1,8 +1,8 @@
 class Whistler < Formula
   desc "Lightweight code editor built with Rust and iced"
   homepage "https://github.com/Albertlungu/Whistler"
-  url "https://github.com/Albertlungu/Whistler/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "7795e8aac155d430db450b6ddd87afbdacd966fbc1ebd046959f0e4e2dbd8f51"
+  url "https://github.com/Albertlungu/Whistler/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "2835b001d2816ac96115c2286d72987e0b3a1393446074b9a19c7398a9fcefb8"
   license "MIT"
 
   depends_on "rust" => :build
