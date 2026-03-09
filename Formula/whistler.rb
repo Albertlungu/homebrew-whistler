@@ -10,7 +10,8 @@ class Whistler < Formula
   def install
     # Build the binary from the nested whistler/ directory
     cd "whistler" do
-      system "cargo", "install", "--locked", "--root", prefix, "--path", "."
+      system "cargo", "build", "--release"
+      bin.install "target/release/Whistler"
     end
 
     # Provide a conventional lowercase executable name
