@@ -9,10 +9,8 @@ class Whistler < Formula
 
   def install
     # Build the binary from the nested whistler/ directory
-    cd "whistler" do
-      system "cargo", "build", "--release"
-      bin.install "target/release/Whistler"
-    end
+    system "cargo", "build", "--release", "--manifest-path=whistler/Cargo.toml"
+    bin.install "whistler/target/release/Whistler"
 
     # Provide a conventional lowercase executable name
     bin.install_symlink bin/"Whistler" => "whistler"
