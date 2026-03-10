@@ -8,16 +8,15 @@ class Whistler < Formula
   depends_on "rust" => :build
 
   def install
-    # Build the binary from the nested whistler/ directory
-    system "cargo", "build", "--release", "--manifest-path=whistler/Cargo.toml"
-    bin.install "whistler/target/release/Whistler"
+    # Build and install from the nested whistler/ directory
+    system "cargo", "install", *std_cargo_args(path: "whistler")
 
     # Provide a conventional lowercase executable name
     bin.install_symlink bin/"Whistler" => "whistler"
   end
 
   test do
-    assert_predicate bin/"Whistler", :exist?
-    assert_predicate bin/"whistler", :exist?
+    assert_path_exists bin/"Whistler"
+    assert_path_exists bin/"whistler"
   end
 end
